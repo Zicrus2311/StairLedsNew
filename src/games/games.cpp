@@ -2,7 +2,8 @@
 
 #include "FastLED.h"
 
-#include"..\colorUtils\hsvRgb.h"
+#include "..\colorUtils\hsvRgb.h"
+#include "whackAMole.h"
 
 bool* games::stopDown;
 bool* games::easyDown;
@@ -28,7 +29,7 @@ void games::rainbow() {
     else if(*hardDown) fillStrip(CRGB(255, 0, 0));
     else {
         for (int i = 0; i < numLeds; i++) {
-            leds[i] = HsvRgb::q_hue2rgb(i + (millis() - modeBeginTime) / 50);
+            leds[i] = hsvRgb::q_hue2rgb(i + (millis() - modeBeginTime) / 50);
         }
     }
 }
@@ -52,6 +53,9 @@ void games::gameLoop() {
     switch (curMode) {
         case Modes::Rainbow:
             rainbow();
+            break;
+        case Modes::WhackAMole:
+            whackAMole::gameLoop();
             break;
     }
 }

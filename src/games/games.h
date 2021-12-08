@@ -3,9 +3,6 @@
 struct CRGB;
 
 class games {
-private:
-    static void fillStrip(const CRGB& color);
-
 public:
     static bool* stopDown;
     static bool* easyDown;
@@ -16,10 +13,13 @@ public:
     static int numLeds;
 
     enum Modes {
-        Rainbow
+        Rainbow,
+        WhackAMole
     };
     static Modes curMode;
     static unsigned long modeBeginTime;
+    
+    static void fillStrip(const CRGB& color);
 
     static void rainbow();
 

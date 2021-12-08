@@ -5,7 +5,7 @@
 struct CHSV;
 struct CRGB;
 
-class HsvRgb {
+class hsvRgb {
 public:
     static CRGB hsv2rgb(CHSV color);
     static CHSV rgb2hsv(CRGB color);

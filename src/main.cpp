@@ -26,6 +26,7 @@ void setup() {
   pinMode(HARD_PIN, INPUT_PULLUP);
 
   games::initialize(leds, NUM_LEDS, stopDown, easyDown, mediumDown, hardDown);
+  games::switchMode(games::Modes::WhackAMole);
 
   FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, NUM_LEDS);
   FastLED.setMaxPowerInVoltsAndMilliamps(5, 500);
