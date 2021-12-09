@@ -10,14 +10,15 @@
             "includePath": [
                 "e:/Arduino/StairLedsNew/include",
                 "e:/Arduino/StairLedsNew/src",
+                "e:/Arduino/StairLedsNew/.pio/libdeps/uno/LiquidCrystal",
                 "e:/Arduino/StairLedsNew/.pio/libdeps/uno/FastLED/src",
                 "C:/Users/bo/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
                 "C:/Users/bo/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
                 "C:/Users/bo/.platformio/packages/framework-arduino-avr/cores/arduino",
                 "C:/Users/bo/.platformio/packages/framework-arduino-avr/variants/standard",
+                "C:/Users/bo/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
                 "C:/Users/bo/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
                 "C:/Users/bo/.platformio/packages/framework-arduino-avr/libraries/HID/src",
-                "C:/Users/bo/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
                 "C:/Users/bo/.platformio/packages/tool-unity",
                 ""
             ],
@@ -26,14 +27,15 @@
                 "path": [
                     "e:/Arduino/StairLedsNew/include",
                     "e:/Arduino/StairLedsNew/src",
+                    "e:/Arduino/StairLedsNew/.pio/libdeps/uno/LiquidCrystal",
                     "e:/Arduino/StairLedsNew/.pio/libdeps/uno/FastLED/src",
                     "C:/Users/bo/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
                     "C:/Users/bo/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
                     "C:/Users/bo/.platformio/packages/framework-arduino-avr/cores/arduino",
                     "C:/Users/bo/.platformio/packages/framework-arduino-avr/variants/standard",
+                    "C:/Users/bo/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
                     "C:/Users/bo/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
                     "C:/Users/bo/.platformio/packages/framework-arduino-avr/libraries/HID/src",
-                    "C:/Users/bo/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
                     "C:/Users/bo/.platformio/packages/tool-unity",
                     ""
                 ]

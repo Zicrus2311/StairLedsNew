@@ -1,50 +1,60 @@
 #include <Arduino.h>
 #include <FastLED.h>
+#include <LiquidCrystal.h>
+#include <Wire.h>
 
 #include "colorUtils/hsvRgb.h"
 #include "games/games.h"
 
-#define STOP_PIN 5
-#define EASY_PIN 4
-#define MEDIUM_PIN 3
-#define HARD_PIN 2
+// Buttons
+#define START_PIN 9
+#define STOP_PIN 8
 
+bool startDown;
+bool startPrev;
 bool stopDown;
-bool easyDown;
-bool mediumDown;
-bool hardDown;
+bool stopPrev;
 
+// LED strip
 #define LED_PIN 10
 #define NUM_LEDS 258
 
 CRGB leds[NUM_LEDS];
 
-void setup() {
-  pinMode(STOP_PIN, INPUT_PULLUP);
-  pinMode(EASY_PIN, INPUT_PULLUP);
-  pinMode(MEDIUM_PIN, INPUT_PULLUP);
-  pinMode(HARD_PIN, INPUT_PULLUP);
+// LCD display
+#define LCD_RS 12
+#define LCD_ENABLE 11
+#define LCD_D4 5
+#define LCD_D5 4
+#define LCD_D6 3
+#define LCD_D7 2
 
-  games::initialize(leds, NUM_LEDS, stopDown, easyDown, mediumDown, hardDown); 
-  games::switchMode(games::Modes::Rainbow);
+LiquidCrystal lcd(LCD_RS, LCD_ENABLE, LCD_D4, LCD_D5, LCD_D6, LCD_D7);
+
+void setup() {
+  pinMode(START_PIN, INPUT_PULLUP);
+  pinMode(STOP_PIN, INPUT_PULLUP);
+
+  games::initialize(startDown, startPrev, stopDown, stopPrev, leds, NUM_LEDS, lcd);
+  games::switchMode(games::Modes::Idle);
 
   FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, NUM_LEDS);
-  FastLED.setMaxPowerInVoltsAndMilliamps(5, 500);
+  FastLED.setMaxPowerInVoltsAndMilliamps(5, 250);
   FastLED.clear();
   FastLED.show();
+
+  lcd.begin(16, 2);
+  games::switchLcdMode(games::LcdModes::Time);
 }
 
 void loop() {
+  startDown = !digitalRead(START_PIN);
   stopDown = !digitalRead(STOP_PIN);
-  easyDown = !digitalRead(EASY_PIN);
-  mediumDown = !digitalRead(MEDIUM_PIN);
-  hardDown = !digitalRead(HARD_PIN);
-
-  if(easyDown) games::switchMode(games::Modes::Rainbow);
-  if(mediumDown) games::switchMode(games::Modes::LedRun);
-  if(hardDown) games::switchMode(games::Modes::WhackAMole);
 
   games::gameLoop();
   
   FastLED.show();
+
+  startPrev = startDown;
+  stopPrev = stopDown;
 }
