@@ -4,6 +4,7 @@
 
 #include "..\colorUtils\hsvRgb.h"
 #include "whackAMole.h"
+#include "ledRun.h"
 
 bool* games::stopDown;
 bool* games::easyDown;
@@ -53,6 +54,9 @@ void games::gameLoop() {
     switch (curMode) {
         case Modes::Rainbow:
             rainbow();
+            break;
+        case Modes::LedRun:
+            ledRun::gameLoop();
             break;
         case Modes::WhackAMole:
             whackAMole::gameLoop();

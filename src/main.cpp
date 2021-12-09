@@ -25,8 +25,8 @@ void setup() {
   pinMode(MEDIUM_PIN, INPUT_PULLUP);
   pinMode(HARD_PIN, INPUT_PULLUP);
 
-  games::initialize(leds, NUM_LEDS, stopDown, easyDown, mediumDown, hardDown);
-  games::switchMode(games::Modes::WhackAMole);
+  games::initialize(leds, NUM_LEDS, stopDown, easyDown, mediumDown, hardDown); 
+  games::switchMode(games::Modes::Rainbow);
 
   FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, NUM_LEDS);
   FastLED.setMaxPowerInVoltsAndMilliamps(5, 500);
@@ -39,6 +39,10 @@ void loop() {
   easyDown = !digitalRead(EASY_PIN);
   mediumDown = !digitalRead(MEDIUM_PIN);
   hardDown = !digitalRead(HARD_PIN);
+
+  if(easyDown) games::switchMode(games::Modes::Rainbow);
+  if(mediumDown) games::switchMode(games::Modes::LedRun);
+  if(hardDown) games::switchMode(games::Modes::WhackAMole);
 
   games::gameLoop();
   

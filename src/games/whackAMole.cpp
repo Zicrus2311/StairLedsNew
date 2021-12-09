@@ -11,13 +11,13 @@ int whackAMole::lastPressTime = 0;
 bool whackAMole::travelling = false;
 
 void whackAMole::gameLoop() {
-    if(*games::stopDown && !pressedLastFrame && !travelling) {
+    if((*games::stopDown || *games::hardDown) && !pressedLastFrame && !travelling) {
         lastPressTime = millis();
         lastLed = curLed;
         curLed = random(0, games::numLeds);
         travelling = true;
     }
-    pressedLastFrame = *games::stopDown;
+    pressedLastFrame = (*games::stopDown || *games::hardDown);
 
     if (travelling) {
         int dir = curLed > lastLed ? 1 : -1;

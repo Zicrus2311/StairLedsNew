@@ -14,6 +14,7 @@ public:
 
     enum Modes {
         Rainbow,
+        LedRun,
         WhackAMole
     };
     static Modes curMode;
